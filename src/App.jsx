@@ -6,20 +6,6 @@ import HowItWorks from './components/HowItWorks'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import ScrollProgress from './components/fx/ScrollProgress'
-import Marquee from './components/fx/Marquee'
-
-const TRADES = [
-  'Barbers',
-  'Cafés',
-  'Gyms',
-  'Salons',
-  'Trades',
-  'Bakeries',
-  'Studios',
-  'Clinics',
-  'Tattooists',
-  'Florists',
-]
 
 export default function App() {
   return (
@@ -42,7 +28,6 @@ export default function App() {
       <Nav />
       <main id="main">
         <Hero />
-        <Marquee items={TRADES} className="border-y border-white/5" />
         <WhatYouGet />
         <Work />
         <HowItWorks />
