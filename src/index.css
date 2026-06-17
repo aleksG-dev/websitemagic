@@ -1,0 +1,713 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   THEME TOKENS  (Tailwind v4 — generates bg-*, text-*, font-* utils)
+   ============================================================ */
+@theme {
+  /* Brand palette */
+  --color-base: #140a22; /* deep violet base */
+  --color-panel: #241541; /* raised panel */
+  --color-magic: #a855f7; /* primary magic violet */
+  --color-magic-light: #c084fc; /* light violet */
+  --color-iris: #6366f1; /* indigo partner */
+  --color-gold: #ffd27a; /* warm gold sparkle (sparingly) */
+  --color-ink: #f4eefe; /* near-white lavender text */
+  --color-muted: #b6a4d6; /* muted lavender */
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  /* Clear, on-brand keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: rgba(168, 85, 247, 0.4);
+    color: #fff;
+  }
+}
+
+/* ============================================================
+   SMALL REUSABLE PIECES
+   ============================================================ */
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.3s ease,
+      filter 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .btn-primary {
+    padding: 1.05rem 1.7rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
+    box-shadow:
+      0 10px 34px -10px rgba(168, 85, 247, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow:
+      0 16px 50px -10px rgba(168, 85, 247, 0.95),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  .btn-ghost {
+    padding: 0.8rem 1.25rem;
+    color: var(--color-ink);
+    background: rgba(244, 238, 254, 0.04);
+    border: 1px solid rgba(192, 132, 252, 0.28);
+  }
+  .btn-ghost:hover {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: rgba(192, 132, 252, 0.55);
+  }
+  .btn-ghost:active {
+    transform: scale(0.97);
+  }
+
+  /* Soft aurora glow blobs used very sparingly behind sections */
+  .aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* ============================================================
+   SIGNATURE: BEFORE / AFTER SLIDER
+   ============================================================ */
+.ba-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  container-type: inline-size; /* mockups size themselves in cqw */
+  background: #0b0614;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y; /* page can still scroll vertically over the slider */
+}
+@media (min-width: 640px) {
+  .ba-frame {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.ba-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* The "before" sits on top, clipped to the left portion [0 .. pos] */
+.ba-before {
+  z-index: 2;
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+}
+.ba-after {
+  z-index: 1;
+}
+
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 2px;
+  transform: translateX(-1px);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 210, 122, 0),
+    rgba(192, 132, 252, 0.9),
+    rgba(255, 210, 122, 0)
+  );
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.8);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: var(--pos, 50%);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 6px rgba(168, 85, 247, 0.18),
+    0 0 28px 4px rgba(168, 85, 247, 0.7),
+    0 8px 22px -6px rgba(0, 0, 0, 0.6);
+  cursor: ew-resize;
+  touch-action: none; /* a drag that starts on the handle never scrolls */
+  transition: box-shadow 0.25s ease;
+}
+.ba-handle:hover,
+.ba-handle:focus-visible {
+  box-shadow:
+    0 0 0 6px rgba(168, 85, 247, 0.28),
+    0 0 36px 8px rgba(168, 85, 247, 0.9),
+    0 8px 22px -6px rgba(0, 0, 0, 0.6);
+}
+.ba-handle svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ba-label {
+  position: absolute;
+  top: 14px;
+  z-index: 3;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.66rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+.ba-label-before {
+  left: 14px;
+  color: #2a1f12;
+  background: rgba(255, 255, 255, 0.82);
+}
+.ba-label-after {
+  right: 14px;
+  color: var(--color-ink);
+  background: rgba(20, 10, 34, 0.6);
+  border: 1px solid rgba(192, 132, 252, 0.5);
+}
+
+/* ============================================================
+   MOCKUP — "BEFORE" (deliberately dated & ugly)
+   ============================================================ */
+.m-before {
+  position: absolute;
+  inset: 0;
+  font-family: 'Times New Roman', Times, serif;
+  background: #cfc9a4; /* drab */
+  color: #001a8c;
+  padding: 2.4cqw;
+  overflow: hidden;
+}
+.m-before .b-banner {
+  background: #19c219;
+  border: 0.5cqw dashed #ff1f1f;
+  color: #d10000;
+  text-align: center;
+  padding: 1cqw;
+  font-size: 2.4cqw;
+  font-weight: 700;
+}
+.m-before .b-title {
+  text-align: center;
+  color: #c40000;
+  font-size: 6.6cqw;
+  font-weight: 700;
+  margin-top: 1.4cqw;
+  text-shadow: 1.5px 1.5px 0 #ffe600;
+}
+.m-before .b-sub {
+  text-align: center;
+  font-style: italic;
+  color: #0b0b8a;
+  font-size: 2.7cqw;
+}
+.m-before .b-nav {
+  margin-top: 1.6cqw;
+  text-align: center;
+  font-size: 2.5cqw;
+  color: #0000ee;
+}
+.m-before .b-nav a {
+  text-decoration: underline;
+}
+.m-before .b-cols {
+  display: flex;
+  gap: 2cqw;
+  margin-top: 2cqw;
+}
+.m-before .b-body {
+  font-size: 2.4cqw;
+  line-height: 1.25;
+  color: #14145a;
+  flex: 1;
+}
+.m-before .b-side {
+  width: 26%;
+  background: #ffe600;
+  border: 1px solid #b8860b;
+  padding: 1cqw;
+  font-size: 2.1cqw;
+  color: #8a0000;
+}
+.m-before .b-cta {
+  display: inline-block;
+  margin-top: 1.6cqw;
+  background: linear-gradient(#ff5b5b, #b80000);
+  color: #fff;
+  border: 2px outset #ff9a9a;
+  padding: 0.8cqw 2cqw;
+  font-size: 2.6cqw;
+  letter-spacing: 0.1cqw;
+  transform: scaleX(1.35); /* stretched, tacky */
+  transform-origin: left;
+}
+.m-before .b-counter {
+  margin-top: 2.4cqw;
+  font-size: 2cqw;
+  color: #333;
+  background: #000;
+  color: #19ff19;
+  display: inline-block;
+  padding: 0.4cqw 1cqw;
+  font-family: 'Courier New', monospace;
+}
+
+/* ============================================================
+   MOCKUP — "AFTER" (the redesign — clean, modern, warm)
+   ============================================================ */
+.m-after {
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-body);
+  color: #f6efe7;
+  background:
+    radial-gradient(
+      120% 90% at 85% 0%,
+      rgba(232, 161, 58, 0.16),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #1c1512, #0f0b09);
+  padding: 4cqw 4.6cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 3cqw;
+}
+.m-after .a-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.m-after .a-brand {
+  font-weight: 800;
+  font-size: 3cqw;
+  letter-spacing: 0.06em;
+}
+.m-after .a-brand b {
+  color: #e8a13a;
+}
+.m-after .a-links {
+  display: flex;
+  gap: 2.4cqw;
+  font-size: 2.1cqw;
+  color: #cdbfb2;
+}
+.m-after .a-pill {
+  background: #e8a13a;
+  color: #1a1410;
+  font-weight: 700;
+  font-size: 2.1cqw;
+  padding: 1.1cqw 2.2cqw;
+  border-radius: 999px;
+}
+.m-after .a-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2cqw;
+  margin-top: 1cqw;
+}
+.m-after .a-rating {
+  font-size: 2cqw;
+  color: #e8a13a;
+  letter-spacing: 0.12em;
+}
+.m-after .a-rating span {
+  color: #b9a89a;
+}
+.m-after h1.a-head {
+  font-family: var(--font-display);
+  font-size: 9cqw;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.m-after .a-head em {
+  color: #e8a13a;
+  font-style: normal;
+}
+.m-after .a-text {
+  font-size: 2.4cqw;
+  color: #cdbfb2;
+  max-width: 58cqw;
+  line-height: 1.4;
+}
+.m-after .a-actions {
+  display: flex;
+  gap: 1.6cqw;
+  align-items: center;
+  margin-top: 0.5cqw;
+}
+.m-after .a-btn {
+  background: #e8a13a;
+  color: #1a1410;
+  font-weight: 700;
+  font-size: 2.3cqw;
+  padding: 1.4cqw 2.6cqw;
+  border-radius: 999px;
+}
+.m-after .a-btn-2 {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f6efe7;
+  font-size: 2.3cqw;
+  padding: 1.4cqw 2.6cqw;
+  border-radius: 999px;
+}
+.m-after .a-services {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2cqw;
+}
+.m-after .a-svc {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2cqw;
+  padding: 1.8cqw;
+}
+.m-after .a-svc .n {
+  font-size: 2.2cqw;
+  font-weight: 600;
+}
+.m-after .a-svc .p {
+  font-size: 2.6cqw;
+  color: #e8a13a;
+  font-weight: 700;
+  margin-top: 0.4cqw;
+}
+
+/* ============================================================
+   WORK SECTION — three small themed website mockups
+   (each lives inside a browser frame; sized in cqw)
+   ============================================================ */
+.w-mock {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  container-type: inline-size;
+  overflow: hidden;
+}
+.w-inner {
+  position: absolute;
+  inset: 0;
+  padding: 5cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 3cqw;
+}
+.w-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.w-brand {
+  font-weight: 800;
+  font-size: 3.4cqw;
+  letter-spacing: 0.04em;
+}
+.w-dots {
+  display: flex;
+  gap: 1.4cqw;
+  font-size: 2.2cqw;
+  opacity: 0.7;
+}
+.w-h {
+  font-family: var(--font-display);
+  font-size: 9cqw;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+.w-p {
+  font-size: 2.7cqw;
+  line-height: 1.4;
+  opacity: 0.82;
+  max-width: 60cqw;
+}
+.w-btn {
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 2.5cqw;
+  padding: 1.5cqw 3cqw;
+  border-radius: 999px;
+}
+.w-row {
+  margin-top: auto;
+  display: flex;
+  gap: 2cqw;
+}
+.w-chip {
+  flex: 1;
+  border-radius: 2.2cqw;
+  padding: 2cqw;
+  font-size: 2.2cqw;
+}
+
+/* Barber — charcoal + amber */
+.w-barber {
+  background: linear-gradient(180deg, #211a16, #14100d);
+  color: #f3ebe2;
+}
+.w-barber .w-brand b {
+  color: #e8a13a;
+}
+.w-barber .w-h em {
+  color: #e8a13a;
+  font-style: normal;
+}
+.w-barber .w-btn {
+  background: #e8a13a;
+  color: #1a1410;
+}
+.w-barber .w-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Café — cream + forest green */
+.w-cafe {
+  background: linear-gradient(180deg, #f7f1e6, #efe6d4);
+  color: #2c3a2e;
+}
+.w-cafe .w-brand b {
+  color: #2f7d4f;
+}
+.w-cafe .w-h em {
+  color: #2f7d4f;
+  font-style: normal;
+}
+.w-cafe .w-p {
+  opacity: 0.7;
+}
+.w-cafe .w-btn {
+  background: #2f7d4f;
+  color: #fff;
+}
+.w-cafe .w-chip {
+  background: #fffdf8;
+  border: 1px solid rgba(47, 125, 79, 0.18);
+}
+
+/* Fitness — near-black + electric lime */
+.w-gym {
+  background: linear-gradient(180deg, #12130f, #0a0b08);
+  color: #eef3e6;
+}
+.w-gym .w-brand b {
+  color: #c6ff3a;
+}
+.w-gym .w-h {
+  text-transform: uppercase;
+}
+.w-gym .w-h em {
+  color: #c6ff3a;
+  font-style: normal;
+}
+.w-gym .w-btn {
+  background: #c6ff3a;
+  color: #14160f;
+}
+.w-gym .w-chip {
+  background: rgba(198, 255, 58, 0.08);
+  border: 1px solid rgba(198, 255, 58, 0.18);
+}
+
+/* ============================================================
+   MOTION — the "alive" layer (all transform/opacity, GPU-friendly)
+   ============================================================ */
+
+/* Slowly drifting aurora glows */
+@keyframes aurora-a {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(6%, 7%) scale(1.18);
+  }
+}
+@keyframes aurora-b {
+  0% {
+    transform: translate(0, 0) scale(1.06);
+  }
+  100% {
+    transform: translate(-7%, -6%) scale(0.92);
+  }
+}
+.aurora-a {
+  animation: aurora-a 17s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.aurora-b {
+  animation: aurora-b 23s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Twinkling sparkles */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(-7px) scale(1) rotate(25deg);
+  }
+}
+.sparkle {
+  opacity: 0;
+  animation: twinkle var(--dur, 4.5s) ease-in-out infinite;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Light sheen sweeping across the primary CTA on hover */
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 75%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary:hover::after {
+  transform: translateX(130%);
+}
+
+/* Pulsing beacon ring on the slider handle */
+.ba-handle::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  border: 2px solid rgba(192, 132, 252, 0.55);
+  animation: handle-pulse 3s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes handle-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  70%,
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* Kinetic marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   MOTION SAFETY — kill animation/transition when user opts out
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
