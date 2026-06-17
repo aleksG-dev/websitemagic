@@ -2,7 +2,7 @@ import Reveal from './Reveal'
 import Sparkles from './fx/Sparkles'
 import MagneticButton from './fx/MagneticButton'
 import { Sparkle, TikTok } from './Icons'
-import { TIKTOK_URL } from '../config'
+import { TIKTOK_URL, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../config'
 
 export default function FinalCTA() {
   return (
@@ -46,6 +46,24 @@ export default function FinalCTA() {
               <Sparkle size={16} />
             </MagneticButton>
           </div>
+        </Reveal>
+        <Reveal delay={0.22}>
+          <p className="mt-6 text-sm text-muted">
+            Prefer to talk?{' '}
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="font-medium text-ink underline decoration-magic/50 underline-offset-4 transition-colors hover:text-magic-light"
+            >
+              {PHONE_DISPLAY}
+            </a>{' '}
+            or{' '}
+            <a
+              href={`mailto:${EMAIL}`}
+              className="font-medium text-ink underline decoration-magic/50 underline-offset-4 transition-colors hover:text-magic-light"
+            >
+              {EMAIL}
+            </a>
+          </p>
         </Reveal>
       </div>
     </section>

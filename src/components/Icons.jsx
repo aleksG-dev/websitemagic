@@ -79,3 +79,23 @@ export function TikTok({ className = '', size = 20 }) {
     </svg>
   )
 }
+
+export function PhoneCall({ className = '', size = 16 }) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M6.4 3.5c.5 0 .9.32 1.04.8l.85 3a1 1 0 0 1-.27 1l-1.3 1.2a12.5 12.5 0 0 0 4.78 4.78l1.2-1.3a1 1 0 0 1 1-.27l3 .85c.48.14.8.54.8 1.04V18a2 2 0 0 1-2.18 2A15.5 15.5 0 0 1 4.5 5.68 2 2 0 0 1 6.4 3.5z"
+        {...stroke}
+      />
+    </svg>
+  )
+}
+
+export function Mail({ className = '', size = 16 }) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" {...stroke} />
+      <path d="M4 7.5l8 5.5 8-5.5" {...stroke} />
+    </svg>
+  )
+}

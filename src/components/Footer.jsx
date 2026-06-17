@@ -1,5 +1,11 @@
-import { TIKTOK_URL, TIKTOK_HANDLE } from '../config'
-import { TikTok } from './Icons'
+import {
+  TIKTOK_URL,
+  TIKTOK_HANDLE,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  EMAIL,
+} from '../config'
+import { TikTok, PhoneCall, Mail } from './Icons'
 
 export default function Footer() {
   return (
@@ -13,15 +19,31 @@ export default function Footer() {
             Custom websites for local businesses that want to grow.
           </p>
         </div>
-        <a
-          href={TIKTOK_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-        >
-          <TikTok size={16} />
-          {TIKTOK_HANDLE}
-        </a>
+        <div className="flex flex-col gap-2.5 sm:items-end">
+          <a
+            href={TIKTOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+          >
+            <TikTok size={16} className="text-magic-light" />
+            {TIKTOK_HANDLE}
+          </a>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+          >
+            <PhoneCall size={16} className="text-magic-light" />
+            {PHONE_DISPLAY}
+          </a>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+          >
+            <Mail size={16} className="text-magic-light" />
+            {EMAIL}
+          </a>
+        </div>
       </div>
       <p className="mx-auto mt-8 w-full max-w-6xl px-5 text-xs text-muted/80 sm:px-8">
         © {new Date().getFullYear()} Website Magic. Made with a little magic in
