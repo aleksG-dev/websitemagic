@@ -19,3 +19,6 @@ dist-ssr
 logs
 *.log
 npm-debug.log*
+
+# OG image build fonts (downloaded on demand — see scripts/og/generate-og.mjs)
+scripts/og/fonts/
