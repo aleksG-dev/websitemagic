@@ -5,6 +5,7 @@ import Work from './components/Work'
 import HowItWorks from './components/HowItWorks'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import ContactForm from './components/ContactForm'
 import ScrollProgress from './components/fx/ScrollProgress'
 import Marquee from './components/fx/Marquee'
 
@@ -46,6 +47,7 @@ export default function App() {
         <WhatYouGet />
         <Work />
         <HowItWorks />
+        <ContactForm />
         <FinalCTA />
       </main>
       <Footer />
