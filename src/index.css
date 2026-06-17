@@ -452,8 +452,8 @@
 }
 
 /* ============================================================
-   WORK SECTION — three small themed website mockups
-   (each lives inside a browser frame; sized in cqw)
+   WORK SECTION — three polished homepage previews
+   (nav + hero + services row; each in a browser frame; sized in cqw)
    ============================================================ */
 .w-mock {
   position: relative;
@@ -465,125 +465,209 @@
 .w-inner {
   position: absolute;
   inset: 0;
-  padding: 5cqw;
+  padding: 4.6cqw;
   display: flex;
   flex-direction: column;
-  gap: 3cqw;
+  gap: 3.2cqw;
 }
-.w-top {
+
+/* nav bar */
+.w-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .w-brand {
   font-weight: 800;
-  font-size: 3.4cqw;
-  letter-spacing: 0.04em;
+  font-size: 3.2cqw;
+  letter-spacing: 0.02em;
 }
-.w-dots {
+.w-links {
   display: flex;
-  gap: 1.4cqw;
-  font-size: 2.2cqw;
-  opacity: 0.7;
+  align-items: center;
+  gap: 2.2cqw;
+  font-size: 2cqw;
+  white-space: nowrap;
+}
+.w-links span:not(.w-pill) {
+  opacity: 0.62;
+}
+.w-pill {
+  font-weight: 700;
+  font-size: 2cqw;
+  padding: 1.1cqw 2.2cqw;
+  border-radius: 999px;
+}
+
+/* hero */
+.w-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8cqw;
+}
+.w-eyebrow {
+  font-size: 2cqw;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 .w-h {
   font-family: var(--font-display);
-  font-size: 9cqw;
-  line-height: 0.96;
+  font-size: 8.2cqw;
+  line-height: 0.98;
   letter-spacing: -0.02em;
 }
+.w-h em {
+  font-style: normal;
+}
 .w-p {
-  font-size: 2.7cqw;
-  line-height: 1.4;
+  font-size: 2.5cqw;
+  line-height: 1.45;
   opacity: 0.82;
-  max-width: 60cqw;
+  max-width: 66cqw;
+}
+.w-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6cqw;
+  margin-top: 0.6cqw;
 }
 .w-btn {
-  align-self: flex-start;
   font-weight: 700;
-  font-size: 2.5cqw;
-  padding: 1.5cqw 3cqw;
+  font-size: 2.3cqw;
+  padding: 1.5cqw 2.9cqw;
   border-radius: 999px;
 }
-.w-row {
+.w-btn2 {
+  font-weight: 600;
+  font-size: 2.3cqw;
+  padding: 1.4cqw 2.6cqw;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.82;
+}
+
+/* services / pricing row */
+.w-cards {
   margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8cqw;
+}
+.w-card {
   display: flex;
-  gap: 2cqw;
-}
-.w-chip {
-  flex: 1;
-  border-radius: 2.2cqw;
+  flex-direction: column;
+  gap: 0.6cqw;
+  border-radius: 2.4cqw;
   padding: 2cqw;
-  font-size: 2.2cqw;
+}
+.w-card .n {
+  font-size: 2.1cqw;
+  font-weight: 600;
+}
+.w-card .p {
+  font-size: 2.1cqw;
+  font-weight: 700;
 }
 
-/* Barber — charcoal + amber */
-.w-barber {
-  background: linear-gradient(180deg, #211a16, #14100d);
-  color: #f3ebe2;
+/* Builder — steel/charcoal + safety orange */
+.w-builder {
+  background:
+    radial-gradient(
+      120% 80% at 90% -10%,
+      rgba(251, 146, 60, 0.16),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #1d232b, #0f1318);
+  color: #eef2f6;
 }
-.w-barber .w-brand b {
-  color: #e8a13a;
+.w-builder .w-brand b,
+.w-builder .w-h em,
+.w-builder .w-eyebrow {
+  color: #fb923c;
 }
-.w-barber .w-h em {
-  color: #e8a13a;
-  font-style: normal;
+.w-builder .w-pill,
+.w-builder .w-btn {
+  background: #fb923c;
+  color: #1a1209;
 }
-.w-barber .w-btn {
-  background: #e8a13a;
-  color: #1a1410;
+.w-builder .w-btn2 {
+  color: #cfd8e2;
 }
-.w-barber .w-chip {
+.w-builder .w-card {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+.w-builder .w-card .p {
+  color: #fb923c;
 }
 
-/* Café — cream + forest green */
-.w-cafe {
-  background: linear-gradient(180deg, #f7f1e6, #efe6d4);
-  color: #2c3a2e;
+/* Hair salon — blush/cream + deep plum */
+.w-salon {
+  background:
+    radial-gradient(
+      120% 80% at 88% -8%,
+      rgba(190, 75, 120, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #fbf2f4, #f4e7ec);
+  color: #3a2630;
 }
-.w-cafe .w-brand b {
-  color: #2f7d4f;
+.w-salon .w-brand b,
+.w-salon .w-h em,
+.w-salon .w-eyebrow {
+  color: #b14a78;
 }
-.w-cafe .w-h em {
-  color: #2f7d4f;
-  font-style: normal;
+.w-salon .w-p {
+  opacity: 0.66;
 }
-.w-cafe .w-p {
-  opacity: 0.7;
-}
-.w-cafe .w-btn {
-  background: #2f7d4f;
+.w-salon .w-pill,
+.w-salon .w-btn {
+  background: #b14a78;
   color: #fff;
 }
-.w-cafe .w-chip {
-  background: #fffdf8;
-  border: 1px solid rgba(47, 125, 79, 0.18);
+.w-salon .w-btn2 {
+  color: #6e4456;
+}
+.w-salon .w-card {
+  background: #fffafc;
+  border: 1px solid rgba(177, 74, 120, 0.16);
+}
+.w-salon .w-card .p {
+  color: #b14a78;
 }
 
-/* Fitness — near-black + electric lime */
-.w-gym {
-  background: linear-gradient(180deg, #12130f, #0a0b08);
-  color: #eef3e6;
+/* Plumber — deep navy + clean cyan */
+.w-plumber {
+  background:
+    radial-gradient(
+      120% 80% at 90% -10%,
+      rgba(56, 189, 248, 0.16),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #0f2438, #0a1622);
+  color: #e8f3f8;
 }
-.w-gym .w-brand b {
-  color: #c6ff3a;
+.w-plumber .w-brand b,
+.w-plumber .w-h em {
+  color: #38bdf8;
 }
-.w-gym .w-h {
-  text-transform: uppercase;
+.w-plumber .w-eyebrow {
+  color: #5fd0f5;
 }
-.w-gym .w-h em {
-  color: #c6ff3a;
-  font-style: normal;
+.w-plumber .w-pill,
+.w-plumber .w-btn {
+  background: #38bdf8;
+  color: #06222e;
 }
-.w-gym .w-btn {
-  background: #c6ff3a;
-  color: #14160f;
+.w-plumber .w-btn2 {
+  color: #b8d9e8;
 }
-.w-gym .w-chip {
-  background: rgba(198, 255, 58, 0.08);
-  border: 1px solid rgba(198, 255, 58, 0.18);
+.w-plumber .w-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(120, 200, 230, 0.16);
+}
+.w-plumber .w-card .p {
+  color: #5fd0f5;
 }
 
 /* ============================================================

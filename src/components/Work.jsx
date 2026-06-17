@@ -1,30 +1,31 @@
 import Reveal from './Reveal'
 import BrowserFrame from './BrowserFrame'
 import TiltCard from './fx/TiltCard'
-import { BarberMock, CafeMock, GymMock } from './mockups/WorkMockups'
+import { BuilderMock, SalonMock, PlumberMock } from './mockups/WorkMockups'
 
-// Each "work" item shows a sample design inside a browser frame.
-// >>> TO ADD A REAL PROJECT: replace `mock: <BarberMock />` with a screenshot:
-//     mock: <img src="/work/barber.png" alt="Barber site I built" className="block w-full" />
+// Each "work" item shows a DEMO / CONCEPT design inside a browser frame —
+// honest showcases of range, not claimed clients (note the "Demo design" badge).
+// >>> TO ADD A REAL PROJECT: replace `mock: <BuilderMock />` with a screenshot:
+//     mock: <img src="/work/builder.png" alt="Builder site I built" className="block w-full" />
 //     (drop the image in the /public folder). Update url + caption to match.
 const work = [
   {
-    url: 'fadeandblade.com',
-    mock: <BarberMock />,
-    tag: 'Barber · warm amber & charcoal',
-    caption: 'Walk-ins turn into booked appointments — the chair stays full.',
+    url: 'hartleybuild.co.uk',
+    mock: <BuilderMock />,
+    tag: 'Builder · steel & safety orange',
+    caption: 'Quote requests land in your inbox before a rival even calls back.',
   },
   {
-    url: 'daybreakcoffee.com',
-    mock: <CafeMock />,
-    tag: 'Café · cream & forest green',
-    caption: 'Regulars order before they arrive, so the morning rush runs smooth.',
+    url: 'bloomhairstudio.co.uk',
+    mock: <SalonMock />,
+    tag: 'Hair salon · blush & plum',
+    caption: 'Chairs fill themselves — clients rebook before they leave the seat.',
   },
   {
-    url: 'ironmethod.fit',
-    mock: <GymMock />,
-    tag: 'Gym · electric lime & black',
-    caption: 'Free-trial signups roll in while you’re on the floor coaching.',
+    url: 'calderplumbing.co.uk',
+    mock: <PlumberMock />,
+    tag: 'Plumber · navy & clean cyan',
+    caption: 'Emergencies turn into booked jobs, day or night, with you hands-free.',
   },
 ]
 
@@ -55,9 +56,9 @@ export default function Work() {
               <figure>
                 <TiltCard>
                   <BrowserFrame url={w.url}>{w.mock}</BrowserFrame>
-                  {/* Clearly-marked placeholder until real screenshots are added */}
+                  {/* Honest label — these are concept designs, not claimed clients */}
                   <span className="absolute right-3 top-12 z-10 rounded-full bg-base/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted ring-1 ring-inset ring-white/10 backdrop-blur">
-                    Sample
+                    Demo design
                   </span>
                 </TiltCard>
                 <figcaption className="mt-5">
