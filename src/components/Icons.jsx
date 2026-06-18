@@ -9,6 +9,49 @@ const stroke = {
   strokeLinejoin: 'round',
 }
 
+// Brand logo mark — a bold white "W" with a gold 4-point sparkle on the
+// purple→blue brand gradient. Kept identical to the inline favicon in
+// index.html so the two never drift apart.
+export function Logo({ className = '', size = 28 }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      role="img"
+      aria-label="Website Magic logo"
+    >
+      <defs>
+        <linearGradient
+          id="wm-logo-grad"
+          x1="0"
+          y1="0"
+          x2="32"
+          y2="32"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0" stopColor="#a855f7" />
+          <stop offset="1" stopColor="#6366f1" />
+        </linearGradient>
+      </defs>
+      <rect width="32" height="32" rx="9" fill="url(#wm-logo-grad)" />
+      <path
+        d="M7 10.5 10.5 22 16 14 21.5 22 25 10.5"
+        fill="none"
+        stroke="#fff"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M25 4.5c.32 2.1 1.05 2.84 3.15 3.15-2.1.32-2.84 1.05-3.15 3.15-.32-2.1-1.05-2.84-3.15-3.15 2.1-.32 2.84-1.05 3.15-3.15z"
+        fill="#ffd27a"
+      />
+    </svg>
+  )
+}
+
 export function Sparkle({ className = '', size = 24 }) {
   return (
     <svg className={className} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">

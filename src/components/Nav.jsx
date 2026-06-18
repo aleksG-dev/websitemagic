@@ -1,5 +1,5 @@
 import { TIKTOK_URL } from '../config'
-import { TikTok } from './Icons'
+import { TikTok, Logo } from './Icons'
 
 export default function Nav() {
   return (
@@ -7,9 +7,16 @@ export default function Nav() {
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a
           href="#top"
-          className="font-display text-lg font-extrabold tracking-tight text-ink"
+          aria-label="Website Magic — home"
+          className="flex items-center gap-2.5 font-display text-lg font-extrabold tracking-tight text-ink"
         >
-          Website Magic <span className="text-gold">✦</span>
+          <Logo
+            size={28}
+            className="shrink-0 rounded-[9px] shadow-[0_5px_16px_-5px_rgba(168,85,247,0.75)] ring-1 ring-white/15"
+          />
+          <span>
+            Website Magic <span className="text-gold">✦</span>
+          </span>
         </a>
         <a
           href={TIKTOK_URL}
