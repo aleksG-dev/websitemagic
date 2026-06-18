@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import BeforeMockup from './mockups/BeforeMockup'
-import AfterMockup from './mockups/AfterMockup'
 import { DragArrows } from './Icons'
 
 /**
@@ -155,9 +154,15 @@ export default function BeforeAfterSlider() {
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
     >
-      {/* AFTER — base layer, revealed as the handle moves left */}
+      {/* AFTER — base layer, revealed as the handle moves left.
+          The real Montfort site I built, embedded live. */}
       <div className="ba-layer ba-after" aria-hidden="true">
-        <AfterMockup />
+        <iframe
+          src="https://montfort-next.vercel.app"
+          title="Montfort — an immersive site I built"
+          loading="lazy"
+          className="ba-embed"
+        />
       </div>
 
       {/* BEFORE — on top, clipped to the left of the handle */}

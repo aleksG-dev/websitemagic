@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
 import BrowserFrame from './BrowserFrame'
 import TiltCard from './fx/TiltCard'
@@ -5,9 +6,6 @@ import { BuilderMock, SalonMock, PlumberMock } from './mockups/WorkMockups'
 
 // Each "work" item shows a DEMO / CONCEPT design inside a browser frame —
 // honest showcases of range, not claimed clients (note the "Demo design" badge).
-// >>> TO ADD A REAL PROJECT: replace `mock: <BuilderMock />` with a screenshot:
-//     mock: <img src="/work/builder.png" alt="Builder site I built" className="block w-full" />
-//     (drop the image in the /public folder). Update url + caption to match.
 const work = [
   {
     url: 'hartleybuild.co.uk',
@@ -30,6 +28,7 @@ const work = [
 ]
 
 export default function Work() {
+  const reduce = useReducedMotion()
   return (
     <section className="relative py-20 sm:py-28">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
@@ -53,9 +52,16 @@ export default function Work() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-x-6 gap-y-10 md:grid-cols-3">
+        <div className="mt-12 grid gap-x-6 gap-y-10 md:grid-cols-3 work-persp">
           {work.map((w, i) => (
-            <Reveal key={w.url} delay={0.07 * i}>
+            <motion.div
+              key={w.url}
+              initial={reduce ? false : { opacity: 0, rotateY: -24, y: 44 }}
+              whileInView={{ opacity: 1, rotateY: 0, y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+              transition={{ duration: 0.85, delay: 0.09 * i, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformPerspective: 1200 }}
+            >
               <figure>
                 <TiltCard>
                   <BrowserFrame url={w.url}>{w.mock}</BrowserFrame>
@@ -71,7 +77,7 @@ export default function Work() {
                   </p>
                 </figcaption>
               </figure>
-            </Reveal>
+            </motion.div>
           ))}
         </div>
       </div>

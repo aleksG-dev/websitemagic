@@ -38,6 +38,7 @@ export default function App() {
 
       {/* animated gradient-mesh world */}
       <div className="mesh" aria-hidden="true" />
+      <div className="sheen" aria-hidden="true" />
 
       <Preloader />
       <SmoothScroll />
