@@ -8,6 +8,9 @@ import Footer from './components/Footer'
 import ContactForm from './components/ContactForm'
 import ScrollProgress from './components/fx/ScrollProgress'
 import Marquee from './components/fx/Marquee'
+import SmoothScroll from './components/fx/SmoothScroll'
+import Preloader from './components/fx/Preloader'
+import MobileCTA from './components/MobileCTA'
 
 const TRADES = [
   'Barbers',
@@ -33,11 +36,13 @@ export default function App() {
         Skip to content
       </a>
 
-      {/* very faint fixed backdrop wash — keeps the deep-violet world cohesive */}
-      <div
-        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(99,102,241,0.12),transparent_60%)]"
-        aria-hidden="true"
-      />
+      {/* animated gradient-mesh world */}
+      <div className="mesh" aria-hidden="true" />
+
+      <Preloader />
+      <SmoothScroll />
+      <div className="grain" aria-hidden="true" />
+      <div className="grade" aria-hidden="true" />
 
       <ScrollProgress />
       <Nav />
@@ -51,6 +56,7 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileCTA />
     </div>
   )
 }

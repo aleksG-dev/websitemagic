@@ -795,3 +795,336 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ============================================================
+   PREMIUM LAYER — smooth scroll, preloader, grain, grade, mobile CTA
+   ============================================================ */
+
+/* Lenis smooth scroll plumbing */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+#main {
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: var(--color-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  transition:
+    transform 0.9s cubic-bezier(0.7, 0, 0.2, 1),
+    opacity 0.9s ease;
+}
+.preloader--out {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.preloader__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 6vw, 2.6rem);
+  letter-spacing: -0.01em;
+}
+.preloader__bar {
+  width: min(280px, 60vw);
+  height: 2px;
+  background: rgba(244, 238, 254, 0.14);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.preloader__bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
+}
+.preloader__pct {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  letter-spacing: 0.2em;
+}
+
+/* Film grain + colour grade (subtle, dark-friendly, pointer-events-none) */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px;
+  animation: grain 0.8s steps(5) infinite;
+}
+@keyframes grain {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: -28px 12px;
+  }
+  50% {
+    background-position: 18px -22px;
+  }
+  75% {
+    background-position: -20px 20px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+.grade {
+  position: fixed;
+  inset: 0;
+  z-index: 61;
+  pointer-events: none;
+  background: radial-gradient(
+    130% 110% at 50% 28%,
+    transparent 42%,
+    rgba(8, 4, 18, 0.5) 100%
+  );
+}
+
+/* Sticky mobile CTA — primary action always one tap away on phones */
+.mobile-cta {
+  position: fixed;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
+  z-index: 70;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 52px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
+  box-shadow:
+    0 12px 34px -8px rgba(168, 85, 247, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+@media (max-width: 640px) {
+  .mobile-cta {
+    display: inline-flex;
+  }
+  #top {
+    padding-bottom: 5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   REDESIGN — richer world, premium cards, gradient accents
+   ============================================================ */
+
+/* Layered animated gradient-mesh backdrop (replaces the flat wash) */
+.mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(40rem 30rem at 12% 8%, rgba(168, 85, 247, 0.2), transparent 60%),
+    radial-gradient(34rem 28rem at 88% 14%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(36rem 30rem at 72% 92%, rgba(192, 132, 252, 0.13), transparent 62%),
+    radial-gradient(30rem 24rem at 18% 82%, rgba(99, 102, 241, 0.11), transparent 60%);
+}
+.mesh::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(22rem 22rem at 30% 30%, rgba(168, 85, 247, 0.22), transparent 60%),
+    radial-gradient(20rem 20rem at 70% 60%, rgba(99, 102, 241, 0.18), transparent 60%);
+  filter: blur(40px);
+  animation: meshDrift 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes meshDrift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(4%, 5%) scale(1.12);
+  }
+}
+.mesh::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(244, 238, 254, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 238, 254, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 75%);
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 75%);
+}
+
+/* Eyebrow chip — glass pill with gradient dot */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(244, 238, 254, 0.04);
+  border: 1px solid rgba(192, 132, 252, 0.22);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.68rem;
+  color: var(--color-muted);
+}
+.chip .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-magic), var(--color-gold));
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+}
+
+/* Gradient text accent */
+.grad-text {
+  background: linear-gradient(
+    120deg,
+    var(--color-magic-light),
+    var(--color-iris) 58%,
+    var(--color-gold)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Bigger section heading */
+.sec-h {
+  font-size: clamp(1.9rem, 4.6vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Premium glass card with gradient hairline border + hover lift */
+.card {
+  position: relative;
+  height: 100%;
+  border-radius: 1.25rem;
+  padding: 1.6rem;
+  background: linear-gradient(
+    180deg,
+    rgba(36, 21, 65, 0.55),
+    rgba(20, 10, 34, 0.35)
+  );
+  border: 1px solid rgba(244, 238, 254, 0.08);
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.8);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    rgba(192, 132, 252, 0.5),
+    transparent 42%,
+    rgba(99, 102, 241, 0.4)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 132, 252, 0.28);
+  box-shadow: 0 40px 80px -40px rgba(168, 85, 247, 0.45);
+}
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Card icon chip */
+.card-ic {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.9rem;
+  color: var(--color-magic-light);
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.22),
+    rgba(99, 102, 241, 0.16)
+  );
+  border: 1px solid rgba(192, 132, 252, 0.3);
+}
+
+/* Big gradient numeral for steps */
+.step-num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  font-size: clamp(2.6rem, 7vw, 3.6rem);
+  background: linear-gradient(135deg, var(--color-magic-light), var(--color-iris));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Trust row under the hero CTA */
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+.trust .sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-magic);
+  opacity: 0.7;
+}

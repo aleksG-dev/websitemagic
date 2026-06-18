@@ -35,10 +35,13 @@ export default function Work() {
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <Reveal>
-            <p className="eyebrow">The work</p>
+            <p className="chip">
+              <span className="dot" aria-hidden="true" />
+              The work
+            </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+            <h2 className="mt-5 sec-h">
               One look, and people trust you before they call.
             </h2>
           </Reveal>

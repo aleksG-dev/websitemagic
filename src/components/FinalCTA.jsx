@@ -15,8 +15,8 @@ export default function FinalCTA() {
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-5 text-center sm:px-8">
         <Reveal>
-          <p className="eyebrow inline-flex items-center gap-2">
-            <Sparkle className="text-gold" size={13} />
+          <p className="chip">
+            <span className="dot" aria-hidden="true" />
             Your move
           </p>
         </Reveal>

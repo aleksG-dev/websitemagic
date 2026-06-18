@@ -41,12 +41,13 @@ export default function ContactForm() {
       <div className="mx-auto grid w-full max-w-6xl items-start gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div className="max-w-md">
           <Reveal>
-            <p className="eyebrow">Get in touch</p>
+            <p className="chip">
+              <span className="dot" aria-hidden="true" />
+              Get in touch
+            </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Tell me about your business.
-            </h2>
+            <h2 className="mt-5 sec-h">Tell me about your business.</h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 text-muted">

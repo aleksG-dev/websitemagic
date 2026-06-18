@@ -24,28 +24,26 @@ export default function HowItWorks() {
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <Reveal>
-            <p className="eyebrow">How it works</p>
+            <p className="chip">
+              <span className="dot" aria-hidden="true" />
+              How it works
+            </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Simple from hello to booked.
-            </h2>
+            <h2 className="mt-5 sec-h">Simple from hello to booked.</h2>
           </Reveal>
         </div>
 
-        <ol className="mt-12 grid gap-8 sm:grid-cols-3">
+        <ol className="mt-12 grid items-stretch gap-6 sm:grid-cols-3">
           {steps.map((s, i) => (
-            <Reveal as="li" key={s.n} delay={0.07 * i}>
-              <div className="flex items-baseline gap-4">
-                <span className="font-mono text-3xl font-bold text-magic/60">
-                  {s.n}
-                </span>
-                <span className="mt-1 h-px flex-1 bg-gradient-to-r from-magic/40 to-transparent" />
+            <Reveal as="li" key={s.n} delay={0.07 * i} className="h-full">
+              <div className="card">
+                <span className="step-num">{s.n}</span>
+                <h3 className="mt-4 text-xl font-bold">{s.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                  {s.text}
+                </p>
               </div>
-              <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                {s.text}
-              </p>
             </Reveal>
           ))}
         </ol>

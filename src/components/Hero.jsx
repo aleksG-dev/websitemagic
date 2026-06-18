@@ -24,8 +24,8 @@ export default function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <p className="eyebrow inline-flex items-center gap-2">
-              <Sparkle className="text-gold" size={13} />
+            <p className="chip">
+              <span className="dot" aria-hidden="true" />
               Custom websites for local business
             </p>
           </Reveal>
@@ -35,7 +35,7 @@ export default function Hero() {
             lines={[
               'Your website should be',
               <>
-                <span className="text-magic-light">winning you customers</span> —
+                <span className="grad-text">winning you customers</span> —
               </>,
               'not collecting dust.',
             ]}
@@ -64,6 +64,16 @@ export default function Hero() {
                 <TikTok size={14} className="text-magic-light" />
                 A quick DM on TikTok is all it takes to start.
               </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.8}>
+            <div className="mt-7 trust">
+              <span>UK local trades</span>
+              <span className="sep" aria-hidden="true" />
+              <span>Mobile-first</span>
+              <span className="sep" aria-hidden="true" />
+              <span>Built to get you booked</span>
             </div>
           </Reveal>
         </div>
