@@ -1,6 +1,7 @@
 import Reveal from './Reveal'
 import BrowserFrame from './BrowserFrame'
 import BeforeAfterSlider from './BeforeAfterSlider'
+import HeroStage from './fx/HeroStage'
 import MaskHeading from './fx/MaskHeading'
 import Sparkles from './fx/Sparkles'
 import MagneticButton from './fx/MagneticButton'
@@ -80,9 +81,11 @@ export default function Hero() {
 
         <Reveal delay={0.85}>
           <figure className="mx-auto mt-14 max-w-5xl">
-            <BrowserFrame url="your-business.com">
-              <BeforeAfterSlider />
-            </BrowserFrame>
+            <HeroStage>
+              <BrowserFrame url="your-business.com">
+                <BeforeAfterSlider />
+              </BrowserFrame>
+            </HeroStage>
             <figcaption className="mx-auto mt-4 max-w-md text-center text-sm text-muted">
               Drag the handle — that tired old site becomes the one on the
               right.{' '}

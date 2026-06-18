@@ -1177,3 +1177,26 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* 3D auto-cycling showcase */
+.show3d {
+  perspective: 1400px;
+}
+.show3d-card {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+.show3d-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(244, 238, 254, 0.22);
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+  cursor: pointer;
+}
+.show3d-dot.is-on {
+  width: 26px;
+  background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
+}

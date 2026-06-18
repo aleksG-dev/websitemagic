@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import ContactForm from './components/ContactForm'
 import ScrollProgress from './components/fx/ScrollProgress'
 import Marquee from './components/fx/Marquee'
+import Showcase3D from './components/Showcase3D'
 import SmoothScroll from './components/fx/SmoothScroll'
 import Preloader from './components/fx/Preloader'
 import MobileCTA from './components/MobileCTA'
@@ -50,6 +51,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <Marquee items={TRADES} className="border-y border-white/5" />
+        <Showcase3D />
         <WhatYouGet />
         <Work />
         <HowItWorks />
