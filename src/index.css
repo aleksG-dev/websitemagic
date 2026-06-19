@@ -1200,3 +1200,111 @@ html.lenis body {
   width: 26px;
   background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
 }
+
+/* Interactive magnetic trade list — image reveal on hover */
+.trades-sec {
+  background: #0c0618;
+}
+.trades-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
+.trades-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 6, 24, 0.72),
+    rgba(12, 6, 24, 0.88)
+  );
+}
+.trade-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.trade-list li {
+  line-height: 0.9;
+}
+.trade-word {
+  display: inline-block;
+  background: none;
+  border: 0;
+  padding: 0.06em 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 11vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  text-align: left;
+  transition:
+    opacity 0.4s ease,
+    color 0.35s ease;
+}
+.trade-word.is-dim {
+  opacity: 0.26;
+}
+@media (hover: hover) and (pointer: fine) {
+  .trade-word {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(244, 238, 254, 0.5);
+  }
+  .trade-word:hover {
+    color: #fff;
+    -webkit-text-stroke: 1px transparent;
+  }
+}
+
+/* Custom cursor */
+.cur-dot,
+.cur-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 999px;
+}
+.cur-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+.cur-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(192, 132, 252, 0.7);
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    margin 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+.cur-ring.is-grow {
+  width: 62px;
+  height: 62px;
+  margin: -31px 0 0 -31px;
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(192, 132, 252, 0.9);
+}
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .cur-dot,
+  .cur-ring {
+    display: none;
+  }
+}
