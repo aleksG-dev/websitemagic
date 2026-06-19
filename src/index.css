@@ -1426,3 +1426,303 @@ html.lenis body {
   text-transform: uppercase;
   font-size: 1.5rem;
 }
+
+/* ============================================================
+   CONCEPT MOCKUPS v2 — neon studio · luxe perfume · bold studio
+   ============================================================ */
+.m2 {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+.m2-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4cqw 4.8cqw;
+  z-index: 4;
+}
+
+/* --- NEON CREATIVE STUDIO --- */
+.m2-neon {
+  background: radial-gradient(120% 90% at 72% 8%, #15153a, #0a0a1a 62%);
+  color: #e8e8f4;
+}
+.m2-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8cqw);
+  opacity: 0.55;
+}
+.m2-glow-a {
+  width: 42cqw;
+  height: 42cqw;
+  left: -8cqw;
+  top: 34cqw;
+  background: #00e0ff;
+}
+.m2-glow-b {
+  width: 34cqw;
+  height: 34cqw;
+  right: 2cqw;
+  top: 4cqw;
+  background: #ff2bd0;
+}
+.m2-orb {
+  position: absolute;
+  right: 5cqw;
+  bottom: 5cqw;
+  width: 30cqw;
+  height: 30cqw;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #00e0ff, #ff2bd0, #ffd700, #00e0ff);
+  filter: blur(1.6cqw);
+  opacity: 0.75;
+}
+.m2-logo {
+  font-weight: 800;
+  font-size: 3.4cqw;
+  letter-spacing: 0.04em;
+}
+.m2-logo b {
+  color: #00e0ff;
+}
+.m2-navlinks {
+  display: flex;
+  gap: 2.4cqw;
+  align-items: center;
+  font-size: 2cqw;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.m2-pill {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 1cqw 2.4cqw;
+}
+.m2-neon-center {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5cqw;
+}
+.m2-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 1.7cqw;
+  color: #9a9ac0;
+}
+.m2-neon-h {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 9cqw;
+  line-height: 0.95;
+  margin-top: 2.2cqw;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 6cqw rgba(0, 224, 255, 0.45);
+}
+.m2-glass {
+  position: absolute;
+  right: 5cqw;
+  top: 32cqw;
+  width: 30cqw;
+  height: 22cqw;
+  z-index: 5;
+  border-radius: 2.4cqw;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(1.5cqw);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 6cqw rgba(0, 224, 255, 0.25);
+}
+.m2-glass-word {
+  font-weight: 800;
+  font-size: 3.4cqw;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 3cqw rgba(255, 43, 208, 0.6);
+}
+.m2-dot {
+  position: absolute;
+  width: 0.9cqw;
+  height: 0.9cqw;
+  border-radius: 50%;
+  background: #ffd700;
+  box-shadow: 0 0 2cqw #ffd700;
+  z-index: 3;
+}
+.m2-dot.d1 { left: 22cqw; top: 24cqw; background: #00e0ff; box-shadow: 0 0 2cqw #00e0ff; }
+.m2-dot.d2 { left: 58cqw; top: 64cqw; background: #ff2bd0; box-shadow: 0 0 2cqw #ff2bd0; }
+.m2-dot.d3 { left: 40cqw; top: 78cqw; }
+.m2-dot.d4 { left: 80cqw; top: 44cqw; background: #00e0ff; box-shadow: 0 0 2cqw #00e0ff; }
+
+/* --- LUXE PERFUME --- */
+.m2-luxe {
+  background: #f7f2e7;
+  color: #1a1a1a;
+}
+.m2-nav-luxe {
+  position: absolute;
+}
+.m2-logo-luxe {
+  font-weight: 700;
+  font-size: 3cqw;
+  letter-spacing: 0.12em;
+}
+.m2-luxe-links {
+  display: flex;
+  gap: 2.6cqw;
+  font-size: 1.9cqw;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.78;
+}
+.m2-luxe-icons {
+  font-size: 2.4cqw;
+  opacity: 0.55;
+  letter-spacing: 0.4cqw;
+}
+.m2-luxe-body {
+  position: absolute;
+  inset: 0;
+}
+.m2-bottle {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -46%);
+  width: 13cqw;
+  height: 28cqw;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(220, 209, 176, 0.55),
+    rgba(190, 175, 130, 0.9)
+  );
+  border-radius: 2cqw 2cqw 1.2cqw 1.2cqw;
+  box-shadow:
+    inset 0 0 4cqw rgba(255, 255, 255, 0.65),
+    0 8cqw 16cqw rgba(120, 100, 50, 0.25);
+}
+.m2-bottle-cap {
+  position: absolute;
+  left: 50%;
+  top: -4.5cqw;
+  transform: translateX(-50%);
+  width: 5.6cqw;
+  height: 5.6cqw;
+  background: linear-gradient(180deg, #dcc78a, #a98f4f);
+  border-radius: 1cqw;
+}
+.m2-luxe-left {
+  position: absolute;
+  left: 5cqw;
+  bottom: 9cqw;
+  z-index: 2;
+}
+.m2-luxe-h {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 15cqw;
+  line-height: 0.9;
+  color: #c9bb92;
+  letter-spacing: -0.01em;
+}
+.m2-luxe-btn {
+  display: inline-block;
+  margin-top: 2cqw;
+  border: 1px solid #1a1a1a;
+  border-radius: 1cqw;
+  padding: 1.4cqw 3cqw;
+  font-size: 2cqw;
+}
+.m2-luxe-p {
+  position: absolute;
+  right: 5cqw;
+  top: 13cqw;
+  width: 26cqw;
+  font-size: 2cqw;
+  line-height: 1.5;
+  opacity: 0.72;
+  z-index: 2;
+}
+
+/* --- BOLD ELECTRIC STUDIO --- */
+.m2-bold {
+  background: #ffde00;
+  color: #0a0a0a;
+}
+.m2-nav-bold {
+  position: absolute;
+}
+.m2-bold-logo {
+  font-size: 4cqw;
+}
+.m2-bold-links {
+  display: flex;
+  gap: 3cqw;
+  font-size: 2cqw;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.m2-bold-hero {
+  position: absolute;
+  left: 5cqw;
+  right: 5cqw;
+  top: 17cqw;
+  z-index: 2;
+}
+.m2-bold-h {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17cqw;
+  line-height: 0.84;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.m2-bold-h i {
+  font-style: italic;
+  font-weight: 500;
+  font-family: 'Playfair Display', Georgia, serif;
+  text-transform: none;
+}
+.m2-bold-tag {
+  margin-top: 2.6cqw;
+  max-width: 52cqw;
+  font-weight: 600;
+  font-size: 2.2cqw;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.m2-bold-obj {
+  position: absolute;
+  right: 6cqw;
+  bottom: 11cqw;
+  width: 26cqw;
+  height: 26cqw;
+  border-radius: 52% 42% 56% 46%;
+  background: linear-gradient(135deg, #b98a1f, #6e4e0a 60%, #d9b24a);
+  box-shadow: 0 10cqw 20cqw rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.m2-bold-foot {
+  position: absolute;
+  left: 5cqw;
+  bottom: 4cqw;
+  font-family: var(--font-mono);
+  font-size: 1.8cqw;
+  letter-spacing: 0.1em;
+  z-index: 2;
+}

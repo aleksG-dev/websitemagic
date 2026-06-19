@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
 import BrowserFrame from './BrowserFrame'
-import { BuilderMock, SalonMock, PlumberMock } from './mockups/WorkMockups'
+import { NeonStudioMock, LuxePerfumeMock, BoldStudioMock } from './mockups/StyleMockups'
 
 const slides = [
-  { url: 'hartleybuild.co.uk', label: 'Builder', mock: <BuilderMock /> },
-  { url: 'bloomhairstudio.co.uk', label: 'Hair salon', mock: <SalonMock /> },
-  { url: 'calderplumbing.co.uk', label: 'Plumber', mock: <PlumberMock /> },
+  { url: 'studionova.io', label: 'Creative studio', mock: <NeonStudioMock /> },
+  { url: 'maisoncrown.com', label: 'Luxury brand', mock: <LuxePerfumeMock /> },
+  { url: 'buttermax.studio', label: 'Bold studio', mock: <BoldStudioMock /> },
 ]
 
 /**

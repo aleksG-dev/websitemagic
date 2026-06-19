@@ -2,28 +2,28 @@ import { motion, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
 import BrowserFrame from './BrowserFrame'
 import TiltCard from './fx/TiltCard'
-import { BuilderMock, SalonMock, PlumberMock } from './mockups/WorkMockups'
+import { NeonStudioMock, LuxePerfumeMock, BoldStudioMock } from './mockups/StyleMockups'
 
 // Each "work" item shows a DEMO / CONCEPT design inside a browser frame —
 // honest showcases of range, not claimed clients (note the "Demo design" badge).
 const work = [
   {
-    url: 'hartleybuild.co.uk',
-    mock: <BuilderMock />,
-    tag: 'Builder · steel & safety orange',
-    caption: 'Quote requests land in your inbox before a rival even calls back.',
+    url: 'studionova.io',
+    mock: <NeonStudioMock />,
+    tag: 'Creative studio · neon & glass',
+    caption: "Look like you're three years ahead of everyone else in town.",
   },
   {
-    url: 'bloomhairstudio.co.uk',
-    mock: <SalonMock />,
-    tag: 'Hair salon · blush & plum',
-    caption: 'Chairs fill themselves — clients rebook before they leave the seat.',
+    url: 'maisoncrown.com',
+    mock: <LuxePerfumeMock />,
+    tag: 'Luxury brand · cream & gold',
+    caption: 'Premium design that makes your prices feel completely obvious.',
   },
   {
-    url: 'calderplumbing.co.uk',
-    mock: <PlumberMock />,
-    tag: 'Plumber · navy & clean cyan',
-    caption: 'Emergencies turn into booked jobs, day or night, with you hands-free.',
+    url: 'buttermax.studio',
+    mock: <BoldStudioMock />,
+    tag: 'Bold brand · electric yellow',
+    caption: 'The kind of site people screenshot and send to a mate.',
   },
 ]
 
