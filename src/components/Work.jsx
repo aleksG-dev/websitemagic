@@ -2,28 +2,28 @@ import { motion, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
 import BrowserFrame from './BrowserFrame'
 import TiltCard from './fx/TiltCard'
-import { NeonStudioMock, LuxePerfumeMock, BoldStudioMock } from './mockups/StyleMockups'
+import { BarberNeon, SalonLuxe, GymBold } from './mockups/StyleMockups'
 
 // Each "work" item shows a DEMO / CONCEPT design inside a browser frame —
 // honest showcases of range, not claimed clients (note the "Demo design" badge).
 const work = [
   {
-    url: 'studionova.io',
-    mock: <NeonStudioMock />,
-    tag: 'Creative studio · neon & glass',
-    caption: "Look like you're three years ahead of everyone else in town.",
+    url: 'fadelab.co.uk',
+    mock: <BarberNeon />,
+    tag: 'Barber · neon & glass',
+    caption: 'Walk-ins fill the gaps; regulars rebook before they leave the chair.',
   },
   {
-    url: 'maisoncrown.com',
-    mock: <LuxePerfumeMock />,
-    tag: 'Luxury brand · cream & gold',
-    caption: 'Premium design that makes your prices feel completely obvious.',
+    url: 'bloomsalon.co.uk',
+    mock: <SalonLuxe />,
+    tag: 'Hair salon · cream & gold',
+    caption: 'Look every bit as premium as the prices on your menu.',
   },
   {
-    url: 'buttermax.studio',
-    mock: <BoldStudioMock />,
-    tag: 'Bold brand · electric yellow',
-    caption: 'The kind of site people screenshot and send to a mate.',
+    url: 'forgefit.uk',
+    mock: <GymBold />,
+    tag: 'Gym · electric yellow',
+    caption: 'Bold enough to stop the scroll and fill your 6am class.',
   },
 ]
 
