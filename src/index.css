@@ -1726,3 +1726,43 @@ html.lenis body {
   letter-spacing: 0.1em;
   z-index: 2;
 }
+
+/* FAQ accordion */
+.faq-list {
+  border-top: 1px solid rgba(244, 238, 254, 0.1);
+}
+.faq-item {
+  border-bottom: 1px solid rgba(244, 238, 254, 0.1);
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+  padding: 1.35rem 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-ink);
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-ic {
+  flex: none;
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-magic-light);
+  transition: transform 0.3s var(--e);
+}
+.faq-item[open] .faq-ic {
+  transform: rotate(45deg);
+}
+.faq-item p {
+  padding: 0 0 1.4rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  max-width: 62ch;
+}

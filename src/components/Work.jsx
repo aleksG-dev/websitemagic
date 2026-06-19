@@ -4,23 +4,26 @@ import BrowserFrame from './BrowserFrame'
 import TiltCard from './fx/TiltCard'
 import { BarberNeon, SalonLuxe, GymBold } from './mockups/StyleMockups'
 
-// Each "work" item shows a DEMO / CONCEPT design inside a browser frame —
-// honest showcases of range, not claimed clients (note the "Demo design" badge).
+// Concept designs recreated in the styles of the reference sites, localised to
+// real trades. Each links to a full, live demo build under /demos/.
 const work = [
   {
     url: 'fadelab.co.uk',
+    demo: '/demos/barber.html',
     mock: <BarberNeon />,
     tag: 'Barber · neon & glass',
     caption: 'Walk-ins fill the gaps; regulars rebook before they leave the chair.',
   },
   {
     url: 'bloomsalon.co.uk',
+    demo: '/demos/salon.html',
     mock: <SalonLuxe />,
     tag: 'Hair salon · cream & gold',
     caption: 'Look every bit as premium as the prices on your menu.',
   },
   {
     url: 'forgefit.uk',
+    demo: '/demos/gym.html',
     mock: <GymBold />,
     tag: 'Gym · electric yellow',
     caption: 'Bold enough to stop the scroll and fill your 6am class.',
@@ -46,8 +49,8 @@ export default function Work() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 text-muted">
-              A few directions to show range — every build is designed fresh for
-              your trade and your town.
+              Real, clickable demo sites — open one and have a play. Every build
+              is designed fresh for your trade and your town.
             </p>
           </Reveal>
         </div>
@@ -64,10 +67,17 @@ export default function Work() {
             >
               <figure>
                 <TiltCard>
-                  <BrowserFrame url={w.url}>{w.mock}</BrowserFrame>
-                  {/* Honest label — these are concept designs, not claimed clients */}
-                  <span className="absolute right-3 top-12 z-10 rounded-full bg-base/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted ring-1 ring-inset ring-white/10 backdrop-blur">
-                    Demo design
+                  <a
+                    href={w.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                    aria-label={`Open the ${w.tag} live demo`}
+                  >
+                    <BrowserFrame url={w.url}>{w.mock}</BrowserFrame>
+                  </a>
+                  <span className="pointer-events-none absolute right-3 top-12 z-10 rounded-full bg-base/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted ring-1 ring-inset ring-white/10 backdrop-blur">
+                    Live demo
                   </span>
                 </TiltCard>
                 <figcaption className="mt-5">
@@ -75,6 +85,14 @@ export default function Work() {
                   <p className="mt-2 text-[15px] leading-relaxed text-ink">
                     {w.caption}
                   </p>
+                  <a
+                    href={w.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-magic-light transition-colors hover:text-gold"
+                  >
+                    Open live demo ↗
+                  </a>
                 </figcaption>
               </figure>
             </motion.div>
