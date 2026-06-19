@@ -1308,3 +1308,118 @@ html.lenis body {
     display: none;
   }
 }
+
+/* Horizontal cinematic showcase — pinned, scroll-driven full-bleed panels */
+.hs-track {
+  position: relative;
+}
+.hs-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.hs-row {
+  display: flex;
+  height: 100vh;
+  will-change: transform;
+}
+.hs-panel {
+  position: relative;
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.hs-img {
+  position: absolute;
+  inset: -8%;
+  background-size: cover;
+  background-position: center;
+  animation: hsZoom 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes hsZoom {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+.hs-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 6, 24, 0.35),
+    rgba(12, 6, 24, 0.55) 55%,
+    rgba(12, 6, 24, 0.85)
+  );
+}
+.hs-content {
+  position: absolute;
+  left: clamp(20px, 6vw, 90px);
+  right: 20px;
+  bottom: clamp(48px, 12vh, 120px);
+  z-index: 2;
+  max-width: 36rem;
+}
+.hs-index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  color: var(--color-muted);
+}
+.hs-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 11vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-top: 0.5rem;
+}
+.hs-line {
+  margin-top: 0.9rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  color: var(--color-ink);
+  max-width: 24ch;
+}
+.hs-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-magic), var(--color-iris));
+  box-shadow: 0 12px 34px -10px rgba(168, 85, 247, 0.7);
+}
+.hs-static {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.1rem;
+}
+.hs-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(12, 6, 24, 0.7));
+}
+.hs-name-sm {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}

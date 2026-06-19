@@ -10,6 +10,7 @@ import ScrollProgress from './components/fx/ScrollProgress'
 import Marquee from './components/fx/Marquee'
 import Showcase3D from './components/Showcase3D'
 import InteractiveTrades from './components/InteractiveTrades'
+import HorizontalShowcase from './components/HorizontalShowcase'
 import SmoothScroll from './components/fx/SmoothScroll'
 import Preloader from './components/fx/Preloader'
 import Cursor from './components/fx/Cursor'
@@ -58,6 +59,7 @@ export default function App() {
         <WhatYouGet />
         <InteractiveTrades />
         <Work />
+        <HorizontalShowcase />
         <HowItWorks />
         <ContactForm />
         <FinalCTA />

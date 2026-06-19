@@ -11,15 +11,10 @@ export default function SmoothScroll() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true })
-    const main = document.getElementById('main')
     let raf
 
     const loop = (t) => {
       lenis.raf(t)
-      if (main) {
-        const v = Math.max(-1.6, Math.min(1.6, (lenis.velocity || 0) * 0.2))
-        main.style.transform = `skewY(${v.toFixed(3)}deg)`
-      }
       raf = requestAnimationFrame(loop)
     }
     raf = requestAnimationFrame(loop)
@@ -27,7 +22,6 @@ export default function SmoothScroll() {
     return () => {
       cancelAnimationFrame(raf)
       lenis.destroy()
-      if (main) main.style.transform = ''
     }
   }, [])
 
