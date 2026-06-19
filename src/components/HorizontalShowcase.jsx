@@ -19,16 +19,6 @@ const panels = [
     line: 'New members signing up at midnight.',
     img: 'https://images.unsplash.com/photo-1757924284732-4189190321cf?q=80&w=1600&auto=format&fit=crop',
   },
-  {
-    name: 'Salons',
-    line: 'Clients rebook before they leave the chair.',
-    img: 'https://images.unsplash.com/photo-1637777277337-f114350fb088?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    name: 'Bakeries',
-    line: 'Pre-orders stacked up before you open.',
-    img: 'https://images.unsplash.com/photo-1691862469586-9c7c183b27b7?q=80&w=1600&auto=format&fit=crop',
-  },
 ]
 
 export default function HorizontalShowcase() {

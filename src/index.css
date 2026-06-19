@@ -1146,7 +1146,7 @@ html.lenis body {
   inset: -35%;
   z-index: -9;
   pointer-events: none;
-  opacity: 0.12;
+  opacity: 0.08;
   background: conic-gradient(
     from 0deg at 50% 50%,
     transparent 0deg,
@@ -1158,7 +1158,7 @@ html.lenis body {
     transparent 360deg
   );
   filter: blur(70px);
-  animation: spin360 38s linear infinite;
+  animation: spin360 52s linear infinite;
   will-change: transform;
 }
 @keyframes spin360 {
@@ -1249,6 +1249,9 @@ html.lenis body {
 }
 .trade-word.is-dim {
   opacity: 0.26;
+}
+.trade-word.is-liquid {
+  filter: url(#liquid);
 }
 @media (hover: hover) and (pointer: fine) {
   .trade-word {

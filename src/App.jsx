@@ -59,9 +59,9 @@ export default function App() {
         <WhatYouGet />
         <InteractiveTrades />
         <Work />
-        <HorizontalShowcase />
         <HowItWorks />
         <ContactForm />
+        <HorizontalShowcase />
         <FinalCTA />
       </main>
       <Footer />

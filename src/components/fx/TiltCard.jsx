@@ -10,7 +10,7 @@ import {
 // A 3D card that tilts toward the cursor, with a soft violet spotlight that
 // tracks the pointer. Used on the work mockups so each one feels like a real,
 // touchable screen. Reduced motion → a plain static container.
-export default function TiltCard({ className = '', max = 12, children }) {
+export default function TiltCard({ className = '', max = 9, children }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
   const px = useMotionValue(0.5)
